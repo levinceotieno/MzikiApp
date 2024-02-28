@@ -11,9 +11,9 @@ const artistName = document.getElementById('artist-name');
 
 // Array of songs
 const songs = [
-    { title: "Why try", artist: "Ariana Grande", src: "media/why_try.mp3" },
-    { title: "Under the influence", artist: "C.Brown", src: "media/UT_Influence.mp3" },
-    { title: "Pochine", artist: "Ana", src: "media/song.mp3" },
+    { title: "Why try", artist: "Ariana Grande", src: "../../templates/media/why_try.mp3" },
+    { title: "Under the influence", artist: "C.Brown", src: "../../templates/media/UT_Influence.mp3" },
+    { title: "Pochine", artist: "Ana", src: "../../templates/media/song.mp3" },
     // Add more songs as needed
 ];
 
