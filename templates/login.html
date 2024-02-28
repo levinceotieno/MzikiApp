@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="login_style.css">
+</head>
+<body style="background-color: #ffffcc;">
+  <div class="wrapper">
+    <div id="loginPage" class="page">
+      <div class="form-content">
+        <h4>Login</h4>
+        <form onsubmit="event.preventDefault()">
+          <div class="field-wrapper">
+            <input type="text" name="username" placeholder="Username">
+          </div>
+          <div class="field-wrapper">
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password">
+          </div>
+          <div class="field-wrapper">
+            <input type="submit" value="Login" onclick="login()">
+          </div>
+          <span class="forgot-password" onclick="showForgotPasswordPage()">Forgot Password?</span>
+          <span class="signup" onclick="showSignupPage()">Not a user? Sign up</span>
+        </form>
+      </div>
+    </div>
+
+    <div id="signupPage" class="page">
+      <div class="form-content">
+        <h4>Sign up</h4>
+        <form onsubmit="event.preventDefault()">
+          <div class="field-wrapper">
+            <input type="text" name="email" placeholder="Email">
+          </div>
+          <div class="field-wrapper">
+            <input type="password" name="password" placeholder="Password" autocomplete="new-password">
+          </div>
+          <div class="field-wrapper">
+            <input type="password" name="password2" placeholder="Re-enter Password" autocomplete="new-password">
+          </div>
+          <div class="field-wrapper">
+            <input type="submit" value="Sign Up" onclick="signup()">
+          </div>
+          <span class="signin" onclick="showLoginPage()">Already a user? Sign in</span>
+        </form>
+      </div>
+    </div>
+
+    <div id="forgotPasswordPage" class="page">
+      <div class="form-content">
+        <h4>Forgot Password</h4>
+        <form onsubmit="event.preventDefault()">
+          <div class="field-wrapper">
+            <input type="text" name="email" placeholder="Email">
+          </div>
+          <div class="field-wrapper">
+            <input type="submit" value="Submit" onclick="forgotPassword()">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="contactUsPage" class="page">
+      <div class="form-content">
+        <h4>Contact Us</h4>
+        <form onsubmit="event.preventDefault()">
+          <div class="field-wrapper">
+            <input type="text" name="name" placeholder="Name">
+          </div>
+          <div class="field-wrapper">
+            <input type="text" name="email" placeholder="Email">
+          </div>
+          <div class="field-wrapper">
+            <textarea placeholder="Your Message"></textarea>
+          </div>
+          <div class="field-wrapper">
+            <input type="submit" value="Send Message" onclick="sendMessage()">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/login_script.js') }}"></script>
+</body>
+</html>
