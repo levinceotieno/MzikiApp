@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mziki Player</title>
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- Include FontAwesome library for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -31,7 +31,7 @@
             <span style="font-family: 'Font Awesome 5 Free'; font-weight: 900;">Mziki Player</span>
         </div>
         <div class="logo-container">
-            <img src="../static/media/images/logo.png" alt="Mziki" class="logo">
+            <img src="{{ url_for('static', filename='media/images/logo.png') }}" alt="Mziki" class="logo">
         </div>
         <div class="player">
             <div class="song-info">
@@ -45,11 +45,11 @@
                 <input type="range" id="progress" min="0" max="100" value="0">
                 <span id="current-time">00:00</span> / <span id="duration">00:00</span>
             </div>
-            <audio id="audio-player" src="song.mp3"></audio>
+            <audio id="audio-player" src="{{ url_for('static', filename='media/audio/song.mp3') }}"></audio>
             <div class="sound-wave"></div>
         </div>
     </div>
-    <script src="../../static/js/script.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
 
