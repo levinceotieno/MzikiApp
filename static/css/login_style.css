@@ -1,5 +1,6 @@
 /* Theme Color */
-:root {--theme--color: #FFD700; /* Pale Orange-Yellow */
+:root {
+	--theme--color: #fff3e0; /* Pale Orange-Yellow */
 }
 
 /* General Styles */
@@ -92,7 +93,7 @@ body {
   width: 100%;
   background: var(--theme-color);
   line-height: 2em;
-  color: #fff;
+  color: green;
   border: 1px solid var(--theme-color);
   border-radius: 3px;
   padding: 5px;
