@@ -1,0 +1,99 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Disable scrolling */
+}
+
+.container {
+    height: 100vh; /* Ensure the container fills the entire viewport height */
+    background-color: #fff3e0; /* Pale orange-yellow */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    width: 60px; /* Adjust logo size */
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.player {
+    margin-top: 40px; /* Adjust margin as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.song-info h2 {
+    margin-bottom: 5px;
+    font-size: 1.5em; /* Increased font size for better visibility */
+}
+
+.artist-name {
+    color: #777; /* Darkened artist name color */
+    font-size: 1em; /* Adjusted font size */
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.controls button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+}
+
+.controls button:hover {
+    transform: scale(1.2);
+}
+
+.controls button.play-pause {
+    font-size: 1.5em;
+}
+
+.controls button.play-pause:hover {
+    transform: scale(1.2) rotate(20deg);
+}
+
+.controls button.previous,
+.controls button.next {
+    font-size: 1.2em;
+}
+
+.controls button.previous:hover,
+.controls button.next:hover {
+    transform: scale(1.2) rotate(20deg);
+}
+
+#progress {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#current-time, #duration {
+    margin-left: 10px;
+    font-size: 0.8em;
+}
+
+.fas {
+    font-size: 20px;
+}
+
+/* Highlight playing song */
+.player.playing {
+    background-color: #f0f0f0;
+}
+

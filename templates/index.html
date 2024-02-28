@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mziki Player</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include FontAwesome library for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Center the heading */
+        .heading {
+            text-align: center;
+            font-size: 28px; /* Reduce font size */
+            color: #333; /* Adjust font color as needed */
+            margin-bottom: 20px; /* Adjust bottom margin as needed */
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px; /* Adjust margin as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <!-- Write the heading in a stylish font -->
+            <span style="font-family: 'Font Awesome 5 Free'; font-weight: 900;">Mziki Player</span>
+        </div>
+        <div class="logo-container">
+            <img src="media/logo.png" alt="Mziki" class="logo">
+        </div>
+        <div class="player">
+            <div class="song-info">
+                <h2 id="song-title">Song Title</h2>
+                <p id="artist-name">Artist Name</p>
+            </div>
+            <div class="controls">
+                <button id="play-pause"><i class="fas fa-play"></i></button>
+                <button id="previous"><i class="fas fa-backward"></i></button>
+                <button id="next"><i class="fas fa-forward"></i></button>
+                <input type="range" id="progress" min="0" max="100" value="0">
+                <span id="current-time">00:00</span> / <span id="duration">00:00</span>
+            </div>
+            <audio id="audio-player" src="song.mp3"></audio>
+            <div class="sound-wave"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+    
+
+
