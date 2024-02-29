@@ -1,4 +1,3 @@
-// app.py
 
 from flask import Flask, render_template, redirect, url_for, request, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
