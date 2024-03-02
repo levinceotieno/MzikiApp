@@ -1,5 +1,4 @@
-// Get elements
-
+//Get elements
 const audio = document.getElementById('audio-player');
 const playBtn = document.getElementById('play-pause');
 const progress = document.getElementById('progress');
@@ -9,7 +8,6 @@ const nextBtn = document.getElementById('next');
 const previousBtn = document.getElementById('previous');
 const songTitle = document.getElementById('song-title');
 const artistName = document.getElementById('artist-name');
-const likeBtn = document.getElementById('like');
 
 // Array of songs
 const songs = [
@@ -107,39 +105,6 @@ progress.addEventListener('input', function () {
     audio.currentTime = seekTime;
 });
 
-//Add like functionality
-likeBtn.addEventListener('click', function() {
-    const songId = currentSongIndex; //Assuming the song index in the songs array is used as the song ID
-    fetch(`/api/like_song/${songId}`, {
-        method: 'POST'
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Song liked successfully');
-            // Add any additional UI updates upon successful like
-	    likeBtn.classList.add('liked');
-        } else {
-            console.error('Failed to like song');
-            // Handle error scenario
-        }
-    })
-    .catch(error => {
-        console.error('Error occurred while liking song:', error);
-    });
-});
-
-//Add recommendation functionality
-function getRecommendedSongs() {
-    fetch('/api/recommended_songs')
-    .then(response => response.json())
-    .then(data => {
-        // Handle recommended songs data
-        console.log('Recommended songs:', data);
-    })
-    .catch(error => {
-        console.error('Error occurred while fetching recommended songs:', error);
-    });
-}
-
-//Initialize the first song
+// Initialize the first song
 updateSong(songs[currentSongIndex]);
+

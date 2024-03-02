@@ -26,12 +26,61 @@ class Like(db.Model):
     song_id = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
 
-# Dummy data for liked songs (to be replaced with actual data from the database)
-liked_songs = [
-    { "title": "Why try", "artist": "Ariana Grande", "src": "../../static/media/audio/why_try.mp3" },
-    { "title": "Under the influence", "artist": "C.Brown", "src": "../../static/media/audio/UT_Influence.mp3" },
-    { "title": "Pochine", "artist": "Ana", "src": "../../static/media/audio/song.mp3" }
-]
+class Song(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255), nullable=False)
+    artist = db.Column(db.String(255), nullable=False)
+    src = db.Column(db.String(255), nullable=False)
+
+# API routes for web client communication
+@app.route('/api/recommended_songs')
+def get_recommended_songs():
+    if 'user_id' not in session:
+        return jsonify({'error': 'User not logged in'}), 401
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    liked_songs = [like.song_id for like in user.likes]
+    if not liked_songs:
+        return jsonify({'error': 'No liked songs found'}), 404
+
+    recommended_songs = []
+    for song_id in liked_songs:
+        song = Song.query.get(song_id)
+        if song:
+            recommended_songs.append({
+                'title': song.title,
+                'artist': song.artist,
+                'src': song.src
+            })
+
+    return jsonify(recommended_songs)
+
+@app.route('/api/like_song/<int:song_id>', methods=['POST'])
+def like_song(song_id):
+    if 'user_id' not in session:
+        return jsonify({'error': 'User not logged in'}), 401
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    # Check if the song is already liked by the user
+    if Like.query.filter_by(user_id=user_id, song_id=song_id).first():
+        return jsonify({'error': 'Song already liked'}), 400
+
+    # Add the song to the user's liked songs
+    like = Like(user_id=user_id, song_id=song_id)
+    db.session.add(like)
+    db.session.commit()
+
+    return jsonify({'message': 'Song liked successfully'})
+
+# Add more API routes as needed
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -70,7 +119,7 @@ def logout():
 @app.route('/')
 def index():
     if 'user_id' in session:
-        return render_template('index.html', liked_songs=liked_songs)
+        return render_template('index.html')
     else:
         return redirect(url_for('login'))
 
@@ -84,27 +133,6 @@ def contact_us():
     # Optionally, you can save the message to your database or send an email
 
     return jsonify({'message': 'Message sent successfully'}), 200
-
-@app.route('/like-song', methods=['POST'])
-def like_song():
-    # Get user ID from session
-    user_id = session.get('user_id')
-    if user_id:
-        # Dummy song ID (to be replaced with actual song ID from frontend)
-        song_id = request.json.get('song_id')
-
-        # Check if the user has already liked the song
-        existing_like = Like.query.filter_by(user_id=user_id, song_id=song_id).first()
-        if existing_like:
-            return jsonify({'message': 'Song already liked'}), 200
-        else:
-            # Create a new like record
-            new_like = Like(user_id=user_id, song_id=song_id)
-            db.session.add(new_like)
-            db.session.commit()
-            return jsonify({'message': 'Song liked successfully'}), 200
-    else:
-        return jsonify({'error': 'User not logged in'}), 401
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
