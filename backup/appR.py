@@ -33,8 +33,8 @@ liked_songs = [
     { "title": "Pochine", "artist": "Ana", "src": "../../static/media/audio/song.mp3" }
 ]
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
+@app.route('/register', methods=['GET', 'POST'])
+def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -46,27 +46,21 @@ def signup():
             new_user.set_password(password)
             db.session.add(new_user)
             db.session.commit()
-            session['user_id'] = new_user.id
-            return 'User registered and logged in successfully'
+            return 'User registered successfully'
     else:
-        return render_template('login.html')
+        return render_template('register.html')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
-    if request.method == 'POST':
-        data = request.json
-        username = data.get('username')
-        password = data.get('password')
-        # check if the username exists in the database
-        user = User.query.filter_by(username=username).first()
-        if user and user.check_password(password):
-            session['user_id'] = user.id
-            return jsonify({'message': 'Login successful'}), 200
-        else:
-            return jsonify({'error': 'Invalid username or password'}), 401
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+    user = User.query.filter_by(username=username).first()
+    if user and user.check_password(password):
+        session['user_id'] = user.id
+        return jsonify({'message': 'Login successful'}), 200
     else:
-        # Handle GET request for login page (if needed)
-        return jsonify({'message': 'Welcome to the login page'}), 200
+        return jsonify({'error': 'Invalid username or password'}), 401
 
 @app.route('/logout')
 def logout():
@@ -78,7 +72,7 @@ def index():
     if 'user_id' in session:
         return render_template('index.html', liked_songs=liked_songs)
     else:
-        return render_template('login.html')
+        return redirect(url_for('login'))
 
 @app.route('/contact-us', methods=['POST'])
 def contact_us():

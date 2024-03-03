@@ -1,5 +1,4 @@
-// login_script.js
-
+//login_script.js
 document.addEventListener("DOMContentLoaded", function() {
   // Function to show login page
   function showLoginPage() {
@@ -99,6 +98,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  // Function to switch to the signup page
+  function switchToSignup() {
+    showSignupPage();
+  }
+
   // Initial setup
   hideAllPages();
   showLoginPage();
@@ -119,6 +123,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const contactUsForm = document.querySelector('#contactUsPage form');
   if (contactUsForm) {
     contactUsForm.addEventListener('submit', sendMessage);
+  }
+
+  // Attach event listener to switch to signup page link or button
+  const switchToSignupButton = document.querySelector('#switchToSignup');
+  if (switchToSignupButton) {
+    switchToSignupButton.addEventListener('click', switchToSignup);
   }
 });
 
