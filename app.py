@@ -36,20 +36,20 @@ liked_songs = [
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = request.json.get('username')
+        password = request.json.get('password')
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
-            return 'Username already exists'
+            return jsonify({'error': 'Username already exists'}), 400
         else:
             new_user = User(username=username)
             new_user.set_password(password)
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id
-            return 'User registered and logged in successfully'
+            return jsonify({'message': 'User registered and logged in successfully'}), 200
     else:
-        return render_template('login.html')
+        return jsonify({'error': 'Method not allowed'}), 405
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

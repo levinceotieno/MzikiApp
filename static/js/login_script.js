@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const formData = new FormData(event.target);
     const username = formData.get('username');
     const password = formData.get('password');
-    const response = await fetch('/register', {
+    const response = await fetch('/signup', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: {
