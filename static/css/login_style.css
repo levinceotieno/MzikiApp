@@ -1,51 +1,21 @@
-/* Theme Color */
-:root {
-	--theme--color: #fff3e0; /* Pale Orange-Yellow */
-}
-
-/* General Styles */
+/* login_style.css */
 body {
   font-family: Tahoma,Verdana,Segoe,sans-serif; 
   font-size: 14px;
-  background: #f6fffd;
   padding: 20px;
   text-align: center;
 }
 
 .wrapper {
   width: 250px;
-  height: 350px;
   margin: 60px auto;
-  perspective: 600px;
   text-align: left;
 }
 
-.rec-prism {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: translateZ(-100px);
-  transition: transform 0.5s ease-in;
-}
-
-.face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+.form-content {
+  background-color: #333;
   padding: 20px;
-  background: rgba(250, 250, 250, 0.96);
-  border: 3px solid var(--theme-color);
-  border-radius: 3px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.face h2 {
-  font-size: 1.2em;
-  color: var(--theme-color);
+  border-radius: 10px;
 }
 
 .field-wrapper {
@@ -55,66 +25,41 @@ body {
 
 .field-wrapper input[type="text"],
 .field-wrapper input[type="password"],
-.field-wrapper input[type="submit"],
-.field-wrapper textarea {
+.field-wrapper input[type="submit"] {
   width: 100%;
   border: none;
   background: transparent;
   line-height: 2em;
-  border-bottom: 1px solid var(--theme-color);
-  color: #666;
-}
-
-.field-wrapper input[type="text"]:focus,
-.field-wrapper input[type="password"]:focus,
-.field-wrapper textarea:focus,
-.field-wrapper input[type="text"]:not(:placeholder-shown),
-.field-wrapper input[type="password"]:not(:placeholder-shown),
-.field-wrapper textarea:not(:placeholder-shown) {
-  + label {
-    top: -35%;
-    color: #42509e;
-  }
-}
-
-.field-wrapper label {
-  position: absolute;
-  pointer-events: none;
-  font-size: 0.85em;
-  top: 40%;
-  left: 0;
-  transform: translateY(-50%);
-  transition: all ease-in 0.25s;
-  color: #b3b3b3;
+  border-bottom: 1px solid #fff;
+  color: #fff;
 }
 
 .field-wrapper input[type="submit"] {
   cursor: pointer;
   width: 100%;
-  background: var(--theme-color);
+  background: green; /* Vibrant green */
   line-height: 2em;
-  color: green;
-  border: 1px solid var(--theme-color);
+  color: #fff;
+  border: 1px solid green; /* Vibrant green */
   border-radius: 3px;
   padding: 5px;
 }
 
 .field-wrapper input[type="submit"]:hover {
-  opacity: 0.9;
+  background: #228B22; /* Vibrant green */
+  border-color: #228B22; /* Vibrant green */
 }
 
-.field-wrapper input[type="submit"]:active {
-  transform: scale(0.96);
-}
-
-.psw,
-.signup,
-.singin {
+.Not,
+#switchToSignup {
   display: block;
-  margin: 20px 0;
+  margin-top: 20px;
   font-size: 0.75em;
-  text-align: center;
-  color: #42509e;
+  color: #fff;
   cursor: pointer;
 }
 
+.Not:hover,
+#switchToSignup:hover {
+  color: #green; /* Vibrant green */
+}

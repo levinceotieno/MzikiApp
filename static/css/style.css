@@ -3,16 +3,16 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Disable scrolling */
+    background-color: #fff3e0; /* Pale orange-yellow */
 }
 
 .container {
-    height: 100vh; /* Ensure the container fills the entire viewport height */
-    background-color: #fff3e0; /* Pale orange-yellow */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-color: transparent; /* Remove background color to let theme color occupy the page */
+    padding: 20px; /* Add padding for content */
+    border: 2px solid black; /* Add a black frame around the content */
+    border-radius: 10px; /* Rounded corners for frame */
+    max-width: 400px; /* Limit the width of the frame */
+    margin: 50px auto; /* Center the frame */
     position: relative;
 }
 
@@ -21,7 +21,11 @@ body, html {
     height: auto;
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 10px; /* Move the logo to the top left corner */
+}
+
+.heading {
+    text-align: center; /* Center align the text */
 }
 
 .player {
@@ -44,7 +48,7 @@ body, html {
 
 .controls {
     display: flex;
-    align-items: center;
+    align-items: center; /* Keep controls horizontally aligned */
     margin-top: 20px;
 }
 
@@ -52,7 +56,7 @@ body, html {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin-right: 10px;
+    margin: 0 5px; /* Add margin for spacing */
     transition: transform 0.2s ease;
 }
 
@@ -79,12 +83,11 @@ body, html {
 }
 
 #progress {
-    width: 100%;
-    margin-top: 10px;
+    flex: 1; /* Allow the progress bar to expand and fill the available space */
+    margin: 0 10px; /* Add margin to progress bar */
 }
 
 #current-time, #duration {
-    margin-left: 10px;
     font-size: 0.8em;
 }
 
@@ -101,3 +104,21 @@ body, html {
     color: red; /* Change the color of the like button */
 }
 
+/* Exit button styling */
+.exit-button {
+    color: red; /* Red color for alert */
+    text-decoration: none; /* Remove default link underline */
+    display: block; /* Make it a block element */
+    text-align: center; /* Center align the text */
+    font-weight: bold; /* Make the text bold */
+    position: fixed;
+    bottom: 4em; /* Place the button at the exact bottom of the page */
+    left: 50%; /* Center the button horizontally */
+    transform: translateX(-50%); /* Center the button horizontally */
+    width: 40px; /* Set button width */
+    height: 40px; /* Set button height */
+    background-color: #fff3e0; /* Pale orange-yellow background */
+    border: 2px solid black; /* Black border */
+    border-radius: 50%; /* Circular button */
+    padding: 10px; /* Add padding */
+}
