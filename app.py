@@ -65,13 +65,13 @@ def login():
         else:
             return jsonify({'error': 'Invalid username or password'}), 401
     else:
-        # Handle GET request for login page (if needed)
-        return jsonify({'message': 'Welcome to the login page'}), 200
+        # Handle GET request for login page
+        return render_template('login.html')
 
-@app.route('/logout')
-def logout():
-    session.pop('user_id', None)
-    return redirect('/')
+#@app.route('/logout')
+#def logout():
+ #   session.pop('user_id', None)
+  #  return redirect(url_for('login'))
 
 @app.route('/')
 def index():
