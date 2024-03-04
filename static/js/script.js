@@ -14,7 +14,7 @@ const likeBtn = document.getElementById('like');
 // Array of songs
 const songs = [
     { title: "Why try", artist: "Ariana Grande", src: "../../static/media/audio/why_try.mp3" },
-    { title: "Under the influence", artist: "C.Brown", src: "../../static/media/audio/UT_Influence.mp3" },
+    { title: "Under the influence", artist: "C.Brown", src: "../../static/media/audio/UT-Influence.mp3" },
     { title: "Pochine", artist: "Ana", src: "../../static/media/audio/song.mp3" },
     // Add more songs as needed
 ];
