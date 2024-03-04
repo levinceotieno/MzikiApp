@@ -1,7 +1,7 @@
 
 from werkzeug.security import generate_password_hash
 
-password = 'LEVIgrande@21'
+password = 'your_password'
 hashed_password = generate_password_hash(password)
 
 print(hashed_password)
