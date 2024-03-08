@@ -1,10 +1,11 @@
-/* login_style.css */
+
 body {
   font-family: Tahoma,Verdana,Segoe,sans-serif; 
   font-size: 14px;
   padding: 20px;
   text-align: center;
-}
+  background-color:  #ffffff;
+  color: #333;
 
 .wrapper {
   width: 250px;
@@ -13,9 +14,10 @@ body {
 }
 
 .form-content {
-  background-color: #333;
+  background-color:  #ffffff;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .field-wrapper {
@@ -30,24 +32,24 @@ body {
   border: none;
   background: transparent;
   line-height: 2em;
-  border-bottom: 1px solid #fff;
-  color: #fff;
+  border-bottom: 1px solid #ddd;
+  color: #333;
 }
 
 .field-wrapper input[type="submit"] {
   cursor: pointer;
   width: 100%;
-  background: green; /* Vibrant green */
+  background: #0095ff;
   line-height: 2em;
   color: #fff;
-  border: 1px solid green; /* Vibrant green */
+  border: 1px solid #0095ff;
   border-radius: 3px;
   padding: 5px;
 }
 
 .field-wrapper input[type="submit"]:hover {
-  background: #228B22; /* Vibrant green */
-  border-color: #228B22; /* Vibrant green */
+  background: #0095ff;
+  border-color: #0095ff;
 }
 
 .Not,
@@ -55,11 +57,23 @@ body {
   display: block;
   margin-top: 20px;
   font-size: 0.75em;
-  color: #fff;
+  color: #333;
   cursor: pointer;
 }
 
 .Not:hover,
 #switchToSignup:hover {
-  color: #green; /* Vibrant green */
+  color:  #ffffff;
+}
+
+#backToLogin {
+  position: absolute;
+  top: 3em; /* Position 3em from the top */
+  left: 1em; /* Position 3em from the left */
+  background-color: #0095ff; /* Set background color */
+  color: #ffffff; /* Set text color */
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+  cursor: pointer;
 }

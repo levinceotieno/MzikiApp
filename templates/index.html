@@ -7,15 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <style>
-        /* Add any additional CSS styling here */
-    </style>
 </head>
 <body>
-    <div class="heading">
-        <span style="font-family: 'Poppins', sans-serif;">Mziki Player</span>
-    </div>
     <div class="container">
+        <div class="heading">
+            <h1>Mziki Player</h1>
+        </div>
         <div class="logo-container">
             <img src="{{ url_for('static', filename='media/images/logo.png') }}" alt="Mziki" class="logo">
         </div>
@@ -25,12 +22,13 @@
                 <p id="artist-name">Artist Name</p>
             </div>
             <div class="controls">
-                <button id="play-pause"><i class="fas fa-play"></i></button>
+		<button id="play-pause"><i class="fas fa-play"></i></button>
                 <button id="previous"><i class="fas fa-backward"></i></button>
                 <button id="next"><i class="fas fa-forward"></i></button>
                 <input type="range" id="progress" min="0" max="100" value="0">
                 <span id="current-time">00:00</span> / <span id="duration">00:00</span>
-                <button id="like"><i class="fas fa-heart"></i></button> <button id="logoutButton" class="logout-button">Logout</button>
+                <button id="like"><i class="fas fa-heart"></i></button>
+                <button id="logoutButton" class="logout-button">Logout</button>
             </div>
             <audio id="audio-player" src="{{ url_for('static', filename='media/audio/song.mp3') }}"></audio>
             <div class="sound-wave"></div>
@@ -39,4 +37,3 @@
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
-
