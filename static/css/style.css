@@ -13,7 +13,6 @@ body, html {
     border-radius: 10px; /* Rounded corners for frame */
     max-width: 400px; /* Limit the width of the frame */
     margin: 50px auto; /* Center the frame */
-    position: relative;
 }
 
 .logo {
@@ -26,6 +25,7 @@ body, html {
 
 .heading {
     text-align: center; /* Center align the text */
+    font-family: 'Poppins', sans-serif;
 }
 
 .player {
@@ -34,6 +34,7 @@ body, html {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #f5f5f5; /* Muted background color */
 }
 
 .song-info h2 {
@@ -104,21 +105,17 @@ body, html {
     color: red; /* Change the color of the like button */
 }
 
-/* Exit button styling */
-.exit-button {
-    color: red; /* Red color for alert */
-    text-decoration: none; /* Remove default link underline */
-    display: block; /* Make it a block element */
-    text-align: center; /* Center align the text */
-    font-weight: bold; /* Make the text bold */
-    position: fixed;
-    bottom: 4em; /* Place the button at the exact bottom of the page */
-    left: 50%; /* Center the button horizontally */
-    transform: translateX(-50%); /* Center the button horizontally */
-    width: 40px; /* Set button width */
-    height: 40px; /* Set button height */
-    background-color: #fff3e0; /* Pale orange-yellow background */
-    border: 2px solid black; /* Black border */
-    border-radius: 50%; /* Circular button */
-    padding: 10px; /* Add padding */
-}
+/* Logout button styles */
+.logout-button {
+    color: red; /* black text color */
+    background-color: red; /* Red background color by default */
+    text-align: center;
+    border: none; /* Remove border */
+    position: fixed; /* Position absolutely at the bottom right */
+    bottom: 4em;
+    right: 4em;
+    width: 60px; /* Adjust width for rectangular shape */
+    height: 30px; /* Adjust height for rectangular shape */
+    padding: 5px 10px; /* Adjust padding for rectangular shape */
+    cursor: pointer; /* Show pointer cursor on hover */
+    font-weight:

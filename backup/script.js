@@ -1,3 +1,4 @@
+// Get elements
 
 const audio = document.getElementById('audio-player');
 const playBtn = document.getElementById('play-pause');
@@ -9,7 +10,6 @@ const previousBtn = document.getElementById('previous');
 const songTitle = document.getElementById('song-title');
 const artistName = document.getElementById('artist-name');
 const likeBtn = document.getElementById('like');
-const logoutButton = document.getElementById('logoutButton'); // Add this line
 
 // Array of songs
 const songs = [
@@ -107,9 +107,9 @@ progress.addEventListener('input', function () {
     audio.currentTime = seekTime;
 });
 
-// Add like functionality
+//Add like functionality
 likeBtn.addEventListener('click', function() {
-    const songId = currentSongIndex; // Assuming the song index in the songs array is used as the song ID
+    const songId = currentSongIndex; //Assuming the song index in the songs array is used as the song ID
     fetch(`/api/like_song/${songId}`, {
         method: 'POST'
     })
@@ -117,7 +117,7 @@ likeBtn.addEventListener('click', function() {
         if (response.ok) {
             console.log('Song liked successfully');
             // Add any additional UI updates upon successful like
-            likeBtn.classList.add('liked');
+	    likeBtn.classList.add('liked');
         } else {
             console.error('Failed to like song');
             // Handle error scenario
@@ -128,25 +128,7 @@ likeBtn.addEventListener('click', function() {
     });
 });
 
-// Function to handle logout
-async function logout() {
-    const response = await fetch('/logout', {
-        method: 'GET'
-    });
-    if (response.ok) {
-        window.location.href = '/login'; // Redirect to login
-    } else {
-        console.error('Failed to logout');
-        // Optionally, you can display the error message to the user
-    }
-}
-
-// Attach event listener to the logout button
-if (logoutButton) {
-    logoutButton.addEventListener('click', logout);
-}
-
-// Add recommendation functionality
+//Add recommendation functionality
 function getRecommendedSongs() {
     fetch('/api/recommended_songs')
     .then(response => response.json())
@@ -159,5 +141,5 @@ function getRecommendedSongs() {
     });
 }
 
-// Initialize the first song
+//Initialize the first song
 updateSong(songs[currentSongIndex]);

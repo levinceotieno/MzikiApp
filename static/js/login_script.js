@@ -129,9 +129,25 @@ document.addEventListener("DOMContentLoaded", function() {
     contactUsForm.addEventListener('submit', sendMessage);
   }
 
+  // Attach logout function to logout button click
+  const logoutButton = document.querySelector('#logoutButton');
+  if (logoutButton) {
+       logoutButton.addEventListener('click', logout);
+  }
+
   // Attach event listener to switch to signup page link or button
   const switchToSignupButton = document.querySelector('#switchToSignup');
   if (switchToSignupButton) {
     switchToSignupButton.addEventListener('click', switchToSignup);
+  }
+  // Function to go back to the login page
+  function backToLogin() {
+      window.location.href = '/login'; // Redirect to login page
+  }
+
+  // Attach event listener to the "Back to Login" button
+  const backToLoginButton = document.getElementById('backToLogin');
+  if (backToLoginButton) {
+      backToLoginButton.addEventListener('click', backToLogin);
   }
 });
