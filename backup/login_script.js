@@ -49,9 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (response.ok) {
       window.location.href = '/'; // Redirect to home page upon successful login
     } else {
-      const errorMessage = document.getElementById('login-error-message');
-      errorMessage.innerText = data.error; // Display error message
-      errorMessage.style.display = 'block'; // Show the error message
+      console.error(data.error); // Log error message if login fails
     }
   }
 
@@ -72,9 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (response.ok) {
       window.location.href = '/'; // Redirect to home page upon successful signup
     } else {
-      const errorMessage = document.getElementById('signup-error-message');
-      errorMessage.innerText = data.error; // Display error message
-      errorMessage.style.display = 'block'; // Show the error message
+      console.error(data.error); // Log error message if signup fails
     }
   }
 
@@ -135,3 +131,4 @@ document.addEventListener("DOMContentLoaded", function() {
     switchToSignupButton.addEventListener('click', switchToSignup);
   }
 });
+

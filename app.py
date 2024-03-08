@@ -38,6 +38,12 @@ def signup():
     if request.method == 'POST':
         username = request.json.get('username')
         password = request.json.get('password')
+        # Check if username or password is empty
+        if not username or not password:
+            return jsonify({'error': 'Username and password are required fields'}), 400
+        # Check if password is at least four characters long
+        if len(password) < 4:
+            return jsonify({'error': 'Password must be at least four characters long'}), 400
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
@@ -68,10 +74,10 @@ def login():
         # Handle GET request for login page
         return render_template('login.html')
 
-#@app.route('/logout')
-#def logout():
- #   session.pop('user_id', None)
-  #  return redirect(url_for('login'))
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
 
 @app.route('/')
 def index():
