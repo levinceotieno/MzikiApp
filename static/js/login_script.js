@@ -80,11 +80,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Function to handle sending message
   async function sendMessage(event) {
+    console.log('sendMessage function is triggered');
     event.preventDefault();
     const formData = new FormData(event.target);
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
+    console.log('Name:', name);
+    console.log('Email:', email);
+    console.log('Message:', message);
     const response = await fetch('/contact-us', {
       method: 'POST',
       body: JSON.stringify({ name, email, message }),
@@ -92,7 +96,9 @@ document.addEventListener("DOMContentLoaded", function() {
         'Content-Type': 'application/json'
       }
     });
+    console.log('Response:', response);
     const data = await response.json();
+    console.log('Data:', data);
     if (response.ok) {
       console.log('Message sent successfully');
       // Optionally, you can display a success message or redirect the user
@@ -105,6 +111,10 @@ document.addEventListener("DOMContentLoaded", function() {
   // Function to switch to the signup page
   function switchToSignup() {
     showSignupPage();
+  }
+
+  function switchToContactUs() {
+	  showContactUsPage();
   }
 
   // Initial setup
@@ -149,5 +159,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const backToLoginButton = document.getElementById('backToLogin');
   if (backToLoginButton) {
       backToLoginButton.addEventListener('click', backToLogin);
+  }
+
+  // Attach event listener to switch to contact us page button
+  const switchToContactUsButton = document.querySelector('#switchToContactUs');
+  if (switchToContactUsButton) {
+	  switchToContactUsButton.addEventListener('click', switchToContactUs);
   }
 });

@@ -2,11 +2,13 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_migrate import Migrate
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = '0f1458de840d11bea92997376415cf66'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mziki_user:rootmziki@localhost/mziki_player_db'
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +26,13 @@ class Like(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     song_id = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
+
+class ContactMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
+    message = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
 
 # Dummy data for liked songs (to be replaced with actual data from the database)
