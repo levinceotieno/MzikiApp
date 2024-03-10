@@ -9,13 +9,23 @@ const previousBtn = document.getElementById('previous');
 const songTitle = document.getElementById('song-title');
 const artistName = document.getElementById('artist-name');
 const likeBtn = document.getElementById('like');
-const logoutButton = document.getElementById('logoutButton'); // Add this line
+const logoutButton = document.getElementById('logoutButton');
 
 // Array of songs
 const songs = [
     { title: "Why try", artist: "Ariana Grande", src: "../../static/media/audio/why_try.mp3" },
     { title: "Under the influence", artist: "C.Brown", src: "../../static/media/audio/UT-Influence.mp3" },
-    { title: "Pochine", artist: "Ana", src: "../../static/media/audio/song.mp3" },
+    { title: "Copines", artist: "Aya Nakamura", src: "../../static/media/audio/song.mp3" },
+    { title: "Bejeweled", artist: "Taylor Swift", src: "../../static/media/audio/Bejeweled.mp3" },
+    { title: "I dont do drugs", artist: "Doja Cat ft Ariana Grande", src: "../../static/media/audio/IDDD_doja.mp3" },
+    { title: "Karma", artist: "Ice Spice ft Taylor Swift", src: "../../static/media/audio/karma.mp3" },
+    { title: "Midnight Rain", artist: "Taylor Swift", src: "../../static/media/audio/midnight_rain.mp3" },
+    { title: "Mine", artist: "Taylor Swift", src: "../../static/media/audio/mine.mp3" },
+    { title: "She Knows", artist: "Ne_yo", src: "../../static/media/audio/she_knows_neyo.mp3" },
+    { title: "Skinny Dippin'", artist: "Sabrina Carpenter", src: "../../static/media/audio/skinny_dippin.mp3" },
+    { title: "Speak Now", artist: "Taylor Swift", src: "../../static/media/audio/speak_now.mp3" },
+    { title: "State of Grace", artist: "Taylor Swift", src: "../../static/media/audio/state_of_grace.mp3" },
+    { title: "Wishful Thinking", artist: "Gracie Abrams", src: "../../static/media/audio/wishful_thinking.mp3" },
     // Add more songs as needed
 ];
 

@@ -166,4 +166,8 @@ document.addEventListener("DOMContentLoaded", function() {
   if (switchToContactUsButton) {
 	  switchToContactUsButton.addEventListener('click', switchToContactUs);
   }
+  const backToLoginContactButton = document.getElementById('backToLoginContact');
+  if (backToLoginContactButton) {
+      backToLoginContactButton.addEventListener('click', backToLogin);
+  }
 });
