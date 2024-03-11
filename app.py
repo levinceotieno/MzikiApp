@@ -3,12 +3,14 @@ from flask import Flask, render_template, redirect, url_for, request, jsonify, s
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate
+import requests
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = '0f1458de840d11bea92997376415cf66'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mziki_user:rootmziki@localhost/mziki_player_db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+LASTFM_API_KEY = '3b907f32074f8a77ff09ed232225a132'
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -126,6 +128,49 @@ def like_song():
             return jsonify({'message': 'Song liked successfully'}), 200
     else:
         return jsonify({'error': 'User not logged in'}), 401
+
+@app.route('/api/lastfm_info')
+def get_lastfm_info():
+    # Assuming you want information for a specific artist and song
+    artist_name = request.args.get('artist')
+    song_title = request.args.get('song')
+
+    # Make a request to the Last.fm API
+    api_key = '3b907f32074f8a77ff09ed232225a132'
+    url = f'http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key={api_key}&artist={artist_name}&track={song_title}&format=json'
+    
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        # Extract relevant information from the response and return it
+        # For example, you can return lyrics, duration, genre, etc.
+        return jsonify(data)
+    else:
+        return jsonify({'error': 'Failed to fetch Last.fm info'}), 500
+
+# Endpoint to get recommended songs from Last.fm API
+@app.route('/api/lastfm_recommendations')
+def lastfm_recommendations():
+    artist = request.args.get('artist')
+    genre = request.args.get('genre')
+
+    # Make a request to the Last.fm API for song recommendations
+    url = f'http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist={artist}&api_key={LASTFM_API_KEY}&format=json'
+    response = requests.get(url)
+    data = response.json()
+
+    # Extract recommended songs from the Last.fm API response
+    recommended_songs = []
+    if 'similarartists' in data and 'artist' in data['similarartists']:
+        similar_artists = data['similarartists']['artist']
+        for similar_artist in similar_artists:
+            recommended_songs.append({
+                'title': similar_artist['name'],
+                'artist': similar_artist['name'],  # You can customize this if needed
+                'src': ''  # You can populate this with actual song URLs if available
+            })
+
+    return jsonify(recommended_songs)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

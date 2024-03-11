@@ -33,6 +33,10 @@
             <audio id="audio-player" src="{{ url_for('static', filename='media/audio/song.mp3') }}"></audio>
             <div class="sound-wave"></div>
         </div>
+	<div class="recommended-songs-container">
+	    <h4>Recommended Artist</h4>
+            <div id="recommended-songs"></div>
+	</div>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

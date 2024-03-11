@@ -10,7 +10,7 @@ body, html {
     padding: 20px;
     border: 2px solid black;
     border-radius: 10px;
-    max-width: 400px;
+    max-width: 90%;
     margin: 50px auto;
     background-color: transparent; /* Remove background color to let theme color occupy the page */
 }
@@ -28,18 +28,19 @@ body, html {
 }
 
 .player {
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #f5f5f5;
-    padding: 20px;
+    padding: 10px;
+    max-width: 90%;
 }
 
 .song-info h2 {
     margin-bottom: 5px;
-    font-size: 1.5em;
+    font-size: 1.2em; /* Reduce font size for smaller screens */
 }
 
 .artist-name {
@@ -50,16 +51,19 @@ body, html {
 .controls {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 10px; /* Reduce top margin for spacing */
+    max-width: 90%;
 }
 
 .controls button {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin: 0 5px;
+    margin: 0 3px; /* Reduce margin between buttons */
     transition: transform 0.2s ease;
     color: black; /* Set button text color to black */
+    font-size: 1em; /* Adjust font size of buttons */
 }
 
 .controls button:hover {
@@ -67,7 +71,7 @@ body, html {
 }
 
 .controls button.play-pause {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .controls button.play-pause:hover {
@@ -76,7 +80,7 @@ body, html {
 
 .controls button.previous,
 .controls button.next {
-    font-size: 1.2em;
+    font-size: 1em; /* Adjust font size of previous and next buttons */
 }
 
 .controls button.previous:hover,
@@ -101,22 +105,37 @@ body, html {
     background-color: #f0f0f0;
 }
 
-.liked {
-    color: red;
+.recommended-songs-container {
+    max-height: 200px; /* Set maximum height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 20px;
+    border: 1px solid #ccc; /* Add border for styling */
+    padding: 10px; /* Add padding for spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Logout button styles */
+.recommended-songs-container h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.recommended-song {
+    margin-bottom: 5px;
+    color: green;
+}
+
+.recommended-song h5 {
+    font-size: 1em;
+    margin-bottom: 3px;
+}
+
+.recommended-song p {
+    font-size: 0.8em;
+    color: #777;
+}
+
 .logout-button {
-    color: white;
-    background-color: red;
-    text-align: center;
-    border: none;
     position: fixed;
-    bottom: 4em;
-    right: 4em;
-    width: 60px;
-    height: 30px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-weight: bold;
+    bottom: 6em;
+    right: 20px;
 }

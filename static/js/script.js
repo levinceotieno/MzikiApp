@@ -17,8 +17,8 @@ const songs = [
     { title: "Under the influence", artist: "C.Brown", src: "../../static/media/audio/UT-Influence.mp3" },
     { title: "Copines", artist: "Aya Nakamura", src: "../../static/media/audio/song.mp3" },
     { title: "Bejeweled", artist: "Taylor Swift", src: "../../static/media/audio/Bejeweled.mp3" },
-    { title: "I dont do drugs", artist: "Doja Cat ft Ariana Grande", src: "../../static/media/audio/IDDD_doja.mp3" },
-    { title: "Karma", artist: "Ice Spice ft Taylor Swift", src: "../../static/media/audio/karma.mp3" },
+    { title: "I dont do drugs", artist: "Doja Cat", src: "../../static/media/audio/IDDD_doja.mp3" },
+    { title: "Karma", artist: "Taylor Swift", src: "../../static/media/audio/karma.mp3" },
     { title: "Midnight Rain", artist: "Taylor Swift", src: "../../static/media/audio/midnight_rain.mp3" },
     { title: "Mine", artist: "Taylor Swift", src: "../../static/media/audio/mine.mp3" },
     { title: "She Knows", artist: "Ne_yo", src: "../../static/media/audio/she_knows_neyo.mp3" },
@@ -74,20 +74,6 @@ function playNextSong() {
 function playPreviousSong() {
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     updateSong(songs[currentSongIndex]);
-}
-
-// Function to update song information and play new song
-function updateSong(song) {
-    songTitle.innerText = song.title;
-    artistName.innerText = song.artist;
-    audio.src = song.src;
-
-    // Check if the song should be played or paused based on the previous state
-    if (isPlaying) {
-        playSong();
-    } else {
-        pauseSong();
-    }
 }
 
 // Update the progress bar on timeupdate event
@@ -156,18 +142,71 @@ if (logoutButton) {
     logoutButton.addEventListener('click', logout);
 }
 
-// Add recommendation functionality
-function getRecommendedSongs() {
-    fetch('/api/recommended_songs')
+// Function to fetch recommended songs from Last.fm API via Flask backend
+function getLastfmRecommendations(artist) {
+    fetch(`/api/lastfm_recommendations?artist=${artist}`)
     .then(response => response.json())
     .then(data => {
-        // Handle recommended songs data
-        console.log('Recommended songs:', data);
+        // Display recommended songs
+        console.log('Recommended songs from Last.fm:', data);
+        // You can update the UI to display recommended songs here
     })
     .catch(error => {
-        console.error('Error occurred while fetching recommended songs:', error);
+        console.error('Error occurred while fetching Last.fm recommendations:', error);
     });
 }
 
-// Initialize the first song
+// Function to update recommended songs
+function updateRecommendedSongs() {
+    fetch('/api/lastfm_recommendations?artist=' + encodeURIComponent(artistName.innerText))
+        .then(response => response.json())
+        .then(data => {
+            console.log('Recommended songs from Last.fm:', data);
+            // Display recommended songs on the screen
+            const recommendedSongsContainer = document.getElementById('recommended-songs');
+            recommendedSongsContainer.innerHTML = ''; // Clear previous recommendations
+            data.forEach(song => {
+                const songElement = document.createElement('div');
+                songElement.classList.add('recommended-song');
+                songElement.innerHTML = `
+                    <h3>${song.title}</h3>
+                    <p>${song.artist}</p>
+                `;
+                recommendedSongsContainer.appendChild(songElement);
+            });
+        })
+        .catch(error => {
+            console.error('Error occurred while fetching Last.fm recommendations:', error);
+            // Handle error scenario
+        });
+}
+
+// Update the song information and recommended songs when a new song is selected
+function updateSong(song) {
+    songTitle.innerText = song.title;
+    artistName.innerText = song.artist;
+    audio.src = song.src;
+
+    // Fetch additional information from Last.fm API
+    fetch(`/api/lastfm_info?artist=${song.artist}&song=${song.title}`)
+    .then(response => response.json())
+    .then(data => {
+          // Handle Last.fm data
+          console.log('Last.fm data:', data);
+          // Update recommended songs
+          updateRecommendedSongs(song.artist);
+    })
+    .catch(error => {
+            console.error('Error occurred while fetching Last.fm info:', error);
+    });
+
+    // Check if the song should be played or paused based on the previous state
+    if (isPlaying) {
+        playSong();
+    } else {
+        pauseSong();
+    }
+}
+
+// Initialize the first song and recommended songs
 updateSong(songs[currentSongIndex]);
