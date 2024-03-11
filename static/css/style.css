@@ -4,15 +4,18 @@ body, html {
     padding: 0;
     height: 100%;
     background-color: #ffffff; /* Set background color to white */
+    background-attachment: fixed;
 }
 
 .container {
     padding: 20px;
-    border: 2px solid black;
     border-radius: 10px;
-    max-width: 90%;
-    margin: 50px auto;
+    max-width: 100%; /* Set maximum width to fit the whole screen */
+    height: 100%; /* Ensure container fills the whole screen height */
     background-color: transparent; /* Remove background color to let theme color occupy the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .logo {
@@ -35,12 +38,16 @@ body, html {
     justify-content: center;
     background-color: #f5f5f5;
     padding: 10px;
-    max-width: 90%;
+    width: 90%;
+    max-width: 90%; /* Ensure the music player fits within the container */
+    /* Add border for main music player */
+    border-radius: 18px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for separation */
 }
 
 .song-info h2 {
     margin-bottom: 5px;
-    font-size: 1.2em; /* Reduce font size for smaller screens */
+    font-size: 1.2em;
 }
 
 .artist-name {
@@ -52,7 +59,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px; /* Reduce top margin for spacing */
+    margin-top: 10px;
     max-width: 90%;
 }
 
@@ -60,10 +67,10 @@ body, html {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin: 0 3px; /* Reduce margin between buttons */
+    margin: 0 3px;
     transition: transform 0.2s ease;
-    color: black; /* Set button text color to black */
-    font-size: 1em; /* Adjust font size of buttons */
+    color: black;
+    font-size: 1em;
 }
 
 .controls button:hover {
@@ -80,7 +87,7 @@ body, html {
 
 .controls button.previous,
 .controls button.next {
-    font-size: 1em; /* Adjust font size of previous and next buttons */
+    font-size: 1em;
 }
 
 .controls button.previous:hover,
@@ -106,31 +113,34 @@ body, html {
 }
 
 .recommended-songs-container {
-    max-height: 200px; /* Set maximum height for scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
     margin-top: 20px;
-    border: 1px solid #ccc; /* Add border for styling */
-    padding: 10px; /* Add padding for spacing */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for separation */
+    width: 60%; /* Limit width to 20% of container */
+    left: 4px;
+    position: fixed;
+    bottom: 6em;
+    overflow-y: auto;
+    max-height: 40%;
 }
 
 .recommended-songs-container h4 {
-    font-size: 1.2em;
+    font-size: 0.8em; /* Reduced font size for artist recommended heading */
     margin-bottom: 10px;
 }
 
 .recommended-song {
     margin-bottom: 5px;
     color: green;
+    font-size: 0.6em; /* Reduced font size for recommended artist list */
 }
 
 .recommended-song h5 {
-    font-size: 1em;
     margin-bottom: 3px;
 }
 
 .recommended-song p {
-    font-size: 0.8em;
+    font-size: 0.6em; /* Reduced font size for recommended artist list */
     color: #777;
 }
 
