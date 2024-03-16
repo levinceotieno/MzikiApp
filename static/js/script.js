@@ -37,6 +37,7 @@ function playSong() {
     audio.play();
     isPlaying = true;
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    updateSongTitleClass(isPlaying);
 }
 
 // Function to pause the current song
@@ -44,6 +45,7 @@ function pauseSong() {
     audio.pause();
     isPlaying = false;
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    updateSongTitleClass(isPlaying);
 }
 
 // Function to toggle play/pause state
@@ -74,6 +76,10 @@ function playNextSong() {
 function playPreviousSong() {
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     updateSong(songs[currentSongIndex]);
+}
+
+function updateSongTitleClass(isPlaying) {
+	songTitle.classList.toggle('current-song', isPlaying);
 }
 
 // Update the progress bar on timeupdate event
@@ -217,6 +223,21 @@ const availableMusicList = document.getElementById('available-music-list');
 songs.forEach((song, index) => {                                                            const listItem = document.createElement('li');                                          listItem.textContent = `${index + 1}. ${song.title} - ${song.artist}`;                  listItem.addEventListener('click', () => {                                                  currentSongIndex = index;                                                               updateSong(songs[currentSongIndex]);
     });                                                                                     availableMusicList.appendChild(listItem);
 });
+
+document.getElementById('show-recommended').addEventListener('click', function() {
+	showSection('recommended-songs');
+	document.getElementById('back-to-playlist').style.display = 'block';
+});
+
+function showSection(sectionId) {
+    var sections = document.querySelectorAll('.container > div');
+    for (var i = 0; i < sections.length; i++) {
+        if (sections[i].id !== sectionId) {
+            sections[i].style.display = 'none';
+        }
+    }
+    document.getElementById(sectionId).style.display = 'block';
+}
 
 // Initialize the first song and recommended songs
 updateSong(songs[currentSongIndex]);

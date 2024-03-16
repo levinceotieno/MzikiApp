@@ -112,18 +112,6 @@ body, html {
     background-color: #f0f0f0;
 }
 
-.recommended-songs-container {
-    margin-top: 20px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for separation */
-    width: 60%; /* Limit width to 20% of container */
-    left: 4px;
-    position: fixed;
-    bottom: 6em;
-    overflow-y: auto;
-    max-height: 40%;
-}
-
 .recommended-songs-container h4 {
     font-size: 0.8em; /* Reduced font size for artist recommended heading */
     margin-bottom: 10px;
@@ -146,8 +134,9 @@ body, html {
 
 .logout-button {
     position: fixed;
-    bottom: 6em;
+    top: 0;
     right: 20px;
+    font-weight: bold;
 }
 
 #volume_slider::-webkit-slider-runnable-track {
@@ -162,4 +151,81 @@ body, html {
 /* Ensure volume icons are inline with the slider (already set) */                      .volume-container {
     display: flex;                                                                          align-items: center;
     margin-top: 10px;                                                                       position: relative;
-}                                                                                                                                                                               /* Adjust volume icon margins for better positioning within the slider track  */        .fas.fa-volume-up, .fas.fa-volume-down {                                                    font-size: 0.6em; /* Keep font size small */                                            margin: 0 3px;                                                                      }
+}
+/* Adjust volume icon margins for better positioning within the slider track  */
+.fas.fa-volume-up, .fas.fa-volume-down {
+font-size: 0.6em; /* Keep font size small */
+margin: 0 3px;
+}
+
+.recommended-songs-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background overlay */
+    z-index: 999; /* Ensure the overlay is above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recommended-songs-container {
+    background-color: #fff; /* White background for the recommended songs container */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto; /* Allow scrolling if content exceeds container height */
+}
+
+#back-to-playlist {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: none;
+    color: #fff; /* Text color for the back button */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#show-recommended {
+    background-color: #ffff;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: black;
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding around the button text */
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; /* Adjust margin-top as needed */
+}
+
+#available-music-list {
+    list-style: none;
+    padding: 0;
+}
+
+#available-music-list li {
+    margin-bottom: 10px;
+    font-size: 10px; /* Adjust font size as needed */
+}
+
+.current-song {
+	color: blue;
+}
+
+#available-music-list li.current-song,
+.playlist-item.current-song {
+	color: blue;
+}
+
+.player.playing .current-song {
+	color: blue;
+}
+
+#available-music-list li:hover {
+    background-color: #f0f0f0; /* Add hover effect */
+}

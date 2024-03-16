@@ -16,13 +16,15 @@
         <div class="logo-container">
             <img src="{{ url_for('static', filename='media/images/logo.png') }}" alt="Mziki" class="logo">
         </div>
-        <div class="player">
+        <div class="player" id="music-player">
+            <!-- Music Player content here -->
+            <!-- You can add your music player interface here -->
             <div class="song-info">
-                <h2 id="song-title">Song Title</h2>
+                <h2 id="song-title" class="current-song">Song Title</h2>
                 <p id="artist-name">Artist Name</p>
             </div>
             <div class="controls">
-		<button id="play-pause"><i class="fas fa-play"></i></button>
+                <button id="play-pause"><i class="fas fa-play"></i></button>
                 <button id="previous"><i class="fas fa-backward"></i></button>
                 <button id="next"><i class="fas fa-forward"></i></button>
                 <input type="range" id="progress" min="0" max="100" value="0">
@@ -32,17 +34,19 @@
             </div>
             <audio id="audio-player" src="{{ url_for('static', filename='media/audio/song.mp3') }}"></audio>
             <div class="sound-wave"></div>
-	    <div class="volume-container">
-		    <button id="volume-down" onclick="decreaseVolume()"><i class="fas fa-volume-down"></i></button>
-		    <input type="range" id="volume_slider" min="0" max="100" value="100" onchange="setVolume()">
-		    <button id="volume-up" onclick="increaseVolume()"><i class="fas fa-volume-up"></i></button>
-	    </div>
-	    <ul id="available-music-list">Playlist</u>
-	</div>
-	<div class="recommended-songs-container">
-	    <h4>Recommended Artist</h4>
-            <div id="recommended-songs"></div>
-	</div>
+            <div class="volume-container">
+                <button id="volume-down" onclick="decreaseVolume()"><i class="fas fa-volume-down"></i></button>
+                <input type="range" id="volume_slider" min="0" max="100" value="100" onchange="setVolume()">
+                <button id="volume-up" onclick="increaseVolume()"><i class="fas fa-volume-up"></i></button>
+            </div>
+            <ul id="available-music-list">Playlist</ul>
+            <button id="show-recommended" onclick="showSection('recommended-songs')">See Recommended Artists</button>
+        </div>
+        <div class="recommended-songs-container" id="recommended-songs" style="display: none;">
+            <!-- Recommended Songs content here -->
+            <!-- recommended songs interface here -->
+	    <button id="back-to-playlist" onclick="showSection('music-player')">Back to Playlist</button>
+        </div>
     </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
