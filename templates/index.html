@@ -32,7 +32,13 @@
             </div>
             <audio id="audio-player" src="{{ url_for('static', filename='media/audio/song.mp3') }}"></audio>
             <div class="sound-wave"></div>
-        </div>
+	    <div class="volume-container">
+		    <button id="volume-down" onclick="decreaseVolume()"><i class="fas fa-volume-down"></i></button>
+		    <input type="range" id="volume_slider" min="0" max="100" value="100" onchange="setVolume()">
+		    <button id="volume-up" onclick="increaseVolume()"><i class="fas fa-volume-up"></i></button>
+	    </div>
+	    <ul id="available-music-list">Playlist</u>
+	</div>
 	<div class="recommended-songs-container">
 	    <h4>Recommended Artist</h4>
             <div id="recommended-songs"></div>

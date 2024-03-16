@@ -208,5 +208,15 @@ function updateSong(song) {
     }
 }
 
+function setVolume() {
+	audio.volume = volume_slider.value / 100;
+}
+
+const availableMusicList = document.getElementById('available-music-list');
+
+songs.forEach((song, index) => {                                                            const listItem = document.createElement('li');                                          listItem.textContent = `${index + 1}. ${song.title} - ${song.artist}`;                  listItem.addEventListener('click', () => {                                                  currentSongIndex = index;                                                               updateSong(songs[currentSongIndex]);
+    });                                                                                     availableMusicList.appendChild(listItem);
+});
+
 // Initialize the first song and recommended songs
 updateSong(songs[currentSongIndex]);

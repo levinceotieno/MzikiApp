@@ -149,3 +149,17 @@ body, html {
     bottom: 6em;
     right: 20px;
 }
+
+#volume_slider::-webkit-slider-runnable-track {
+    -webkit-appearance: none; /* Hide default slider track */                           }
+                                                                                        #volume_slider::-moz-range-track {                                                          -moz-appearance: none; /* Hide default slider track */                              }
+                                                                                        /* Style the input element to remove default appearance and allow custom slider positioning */                                                                                  #volume_slider {                                                                            -webkit-appearance: none;
+    appearance: none;
+    height: 5px; /* Already set */
+    background-color: grey; /* Override for custom slider */                                order: 0;                                                                           }                                                                                       
+/* Position the custom slider after the input element */                                #volume_slider + .custom-slider {                                                           display: block;
+}                                                                                       
+/* Ensure volume icons are inline with the slider (already set) */                      .volume-container {
+    display: flex;                                                                          align-items: center;
+    margin-top: 10px;                                                                       position: relative;
+}                                                                                                                                                                               /* Adjust volume icon margins for better positioning within the slider track  */        .fas.fa-volume-up, .fas.fa-volume-down {                                                    font-size: 0.6em; /* Keep font size small */                                            margin: 0 3px;                                                                      }
