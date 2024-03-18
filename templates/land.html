@@ -1,17 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mziki Player - Stream Your Music</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/land.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mziki Player - Stream & Discover Music</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/land.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap">
+</head>
 <body>
+    <header>
+        <h1>Welcome to Mziki Player</h1>
+        <p>Your go-to destination for discovering and enjoying the latest music.</p>
+        <div class="cta-container">
+          <a href="{{ url_for('login') }}" class="cta-button">Start Listening Now</a>
+        </div>
+    </header>
 
-  <header>
-    <h1>Mziki Player</h1>
-    <p>Millions of songs at your fingertips. Stream your favorites, discover new music, and enjoy seamless playback - anytime, anywhere.</p>
-    <img src="hero-image.jpeg" alt="Music Streaming with Mziki Player">
-    <a href="login.html" class="cta-button">Start Listening Now</a> </header>
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>Discover the features that make our music streaming platform stand out:</p>
+        <ul>
+            <li>Curated playlists for every mood and occasion</li>
+            <li>Personalized recommendations based on your listening history</li>
+            <li>High-quality audio streaming for an immersive experience</li>
+            <!-- Add more features as needed -->
+        </ul>
+    </section>
+    
+    <section id="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <blockquote>"Wow, I've been using Mziki Player for a few weeks now, and I'm seriously impressed. Not only does it have an extensive library of music spanning across genres, but its personalized recommendations are on point! I've discovered so many new artists and songs that I never would have found otherwise. Plus, the audio quality is top-notch, making my listening experience truly enjoyable. I highly recommend Mziki Player to any music enthusiast looking for a reliable streaming platform with excellent recommendations."</blockquote>
+            <cite>- Charles Mugo, Music Enthusiast</cite>
+        </div>
+        <!-- Add more testimonials as needed -->
+    </section>
 
-  </body>
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <p>Choose the plan that suits you best:</p>
+        <ul>
+            <li>Free Plan: Access to basic features with occasional ads</li>
+            <li>Premium Plan: Ad-free listening, unlimited skips, and offline downloads</li>
+            <!-- Add more pricing details as needed -->
+        </ul>
+    </section>
+
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+	<button id="faq-toggle">Show FAQ</button>
+        <div class="faq" style="display: none;">
+            <h3>How can I cancel my subscription?</h3>
+            <p>You can cancel your subscription at any time by visiting your account settings.</p>
+        </div>
+        <!-- Add more FAQs as needed -->
+    </section>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </nav>
+        <div class="social-media">
+            <a href="https://www.github.com/levinceotieno" target="_blank"><img src="static/media/images/github.png" alt="Levince Otieno"></a>
+            <a href="https://www.github.com/susan-kimemia" target="_blank"><img src="static/media/images/github.png" alt="Susan Kimemia"></a>
+            <a href="https://twitter.com/safetynet_now" target="_blank"><img src="static/media/images/x.jpeg" alt="Levince Otieno"></a>
+            <a href="https://twitter.com/susanKm_" target="_blank"><img src="static/media/images/x.jpeg" alt="Susan Kimemia"></a>
+            <!-- Add more social media links as needed -->
+        </div>
+    </footer>
+
+    <!-- JavaScript to toggle FAQ visibility -->
+    <script>
+	document.addEventListener('DOMContentLoaded', function() {
+	  var faqToggle = document.getElementById('faq-toggle');
+          var faqSection = document.querySelector('#faq .faq');
+
+          faqToggle.addEventListener('click', function() {
+              if (faqSection.style.display === 'none' || !faqSection.style.display) {
+                  faqSection.style.display = 'block';
+                  faqToggle.textContent = 'Hide FAQ';
+              } else {
+                  faqSection.style.display = 'none';
+                  faqToggle.textContent = 'Show FAQ';
+              }
+          });
+        });
+    </script>
+</body>
 </html>

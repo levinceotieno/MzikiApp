@@ -68,6 +68,13 @@ def signup():
     else:
         return jsonify({'error': 'Method not allowed'}), 405
 
+@app.route('/index')
+def index():
+    if 'user_id' in session:
+        return render_template('index.html', liked_songs=liked_songs)
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -88,14 +95,11 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('landing_page'))
 
 @app.route('/')
-def index():
-    if 'user_id' in session:
-        return render_template('index.html', liked_songs=liked_songs)
-    else:
-        return render_template('login.html')
+def landing_page():
+    return render_template("land.html")
 
 @app.route('/contact-us', methods=['POST'])
 def contact_us():

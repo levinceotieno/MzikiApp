@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     const data = await response.json();
     if (response.ok) {
-      window.location.href = '/'; // Redirect to home page upon successful login
+      window.location.href = '/index'; // Redirect to home page upon successful login
     } else {
       const errorMessage = document.getElementById('login-error-message');
       errorMessage.innerText = data.error; // Display error message
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     const data = await response.json();
     if (response.ok) {
-      window.location.href = '/'; // Redirect to home page upon successful signup
+      window.location.href = '/index'; // Redirect to home page upon successful signup
     } else {
       const errorMessage = document.getElementById('signup-error-message');
       errorMessage.innerText = data.error; // Display error message

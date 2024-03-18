@@ -132,11 +132,11 @@ likeBtn.addEventListener('click', function() {
 
 // Function to handle logout
 async function logout() {
-    const response = await fetch('/logout', {
+    const response = await fetch('/', {
         method: 'GET'
     });
     if (response.ok) {
-        window.location.href = '/login'; // Redirect to login
+        window.location.href = '/'; // Redirect to login
     } else {
         console.error('Failed to logout');
         // Optionally, you can display the error message to the user

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mziki Player - Stream & Discover Music</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/land.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap">
+</head>
+<body>
+  <header>
+    <h1>Mziki Player</h1>
+  </header>
+
+  <div class="hero-section">
+    <img src="{{ url_for('static', filename='media/images/hero-image.jpeg') }}" alt="Music Streaming with Mziki Player" class="hero-image">
+    <p>Millions of songs at your fingertips. <b>Stream your favorites, discover new music with our recommender, and enjoy seamless playback - anytime, anywhere.</b></p>
+    <div class="cta-container">
+      <a href="{{ url_for('login') }}" class="cta-button">Start Listening Now</a>
+    </div>
+  </div>
+</body>
+</html>
