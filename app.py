@@ -37,12 +37,9 @@ class ContactMessage(db.Model):
     message = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.TIMESTAMP, default=db.func.current_timestamp())
 
-# Dummy data for liked songs (to be replaced with actual data from the database)
-liked_songs = [
-    { "title": "Why try", "artist": "Ariana Grande", "src": "../../static/media/audio/why_try.mp3" },
-    { "title": "Under the influence", "artist": "C.Brown", "src": "../../static/media/audio/UT_Influence.mp3" },
-    { "title": "Copines", "artist": "Aya Nakamura", "src": "../../static/media/audio/song.mp3" }
-]
+@app.before_request
+def create_tables():
+    db.create_all()
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -71,6 +68,10 @@ def signup():
 @app.route('/index')
 def index():
     if 'user_id' in session:
+        # Fetch user_id from session
+        user_id = session['user_id']
+        # Fetch liked songs from the database
+        liked_songs = Like.query.filter_by(user_id=user_id).all()
         return render_template('index.html', liked_songs=liked_songs)
     else:
         return redirect(url_for('login'))
@@ -112,20 +113,24 @@ def contact_us():
 
     return jsonify({'message': 'Message sent successfully'}), 200
 
-@app.route('/like-song', methods=['POST'])
+@app.route('/api/like-song', methods=['POST'])
 def like_song():
     # Get user ID from session
     user_id = session.get('user_id')
     if user_id:
-        # Dummy song ID (to be replaced with actual song ID from frontend)
-        song_id = request.json.get('song_id')
+        # Parse JSON data sent from frontend
+        data = request.json
+        song_id = data.get('song_id')
 
         # Check if the user has already liked the song
         existing_like = Like.query.filter_by(user_id=user_id, song_id=song_id).first()
         if existing_like:
-            return jsonify({'message': 'Song already liked'}), 200
+            # Unlike the song (delete the existing like record)
+            db.session.delete(existing_like)
+            db.session.commit()
+            return jsonify({'message': 'Song unliked successfully'}), 200
         else:
-            # Create a new like record
+            # Like the song (create a new like record)
             new_like = Like(user_id=user_id, song_id=song_id)
             db.session.add(new_like)
             db.session.commit()

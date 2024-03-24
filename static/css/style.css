@@ -229,3 +229,7 @@ margin: 0 3px;
 #available-music-list li:hover {
     background-color: #f0f0f0; /* Add hover effect */
 }
+
+.like-btn.liked {
+    color: red;
+}

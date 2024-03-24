@@ -111,15 +111,19 @@ progress.addEventListener('input', function () {
 
 // Add like functionality
 likeBtn.addEventListener('click', function() {
-    const songId = currentSongIndex; // Assuming the song index in the songs array is used as the song ID
-    fetch(`/api/like_song/${songId}`, {
-        method: 'POST'
+    const songId = currentSongIndex;
+    fetch(`/api/like-song`, {
+        method: 'POST',
+        body: JSON.stringify({ song_id: songId }), // Send song_id in the request body
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
     .then(response => {
         if (response.ok) {
             console.log('Song liked successfully');
             // Add any additional UI updates upon successful like
-            likeBtn.classList.add('liked');
+            likeBtn.classList.toggle('liked');
         } else {
             console.error('Failed to like song');
             // Handle error scenario
@@ -220,8 +224,14 @@ function setVolume() {
 
 const availableMusicList = document.getElementById('available-music-list');
 
-songs.forEach((song, index) => {                                                            const listItem = document.createElement('li');                                          listItem.textContent = `${index + 1}. ${song.title} - ${song.artist}`;                  listItem.addEventListener('click', () => {                                                  currentSongIndex = index;                                                               updateSong(songs[currentSongIndex]);
-    });                                                                                     availableMusicList.appendChild(listItem);
+songs.forEach((song, index) => {
+	const listItem = document.createElement('li');
+	listItem.textContent = `${index + 1}. ${song.title} - ${song.artist}`;
+	listItem.addEventListener('click', () => {
+		currentSongIndex = index;
+		updateSong(songs[currentSongIndex]);
+	});
+	availableMusicList.appendChild(listItem);
 });
 
 document.getElementById('show-recommended').addEventListener('click', function() {

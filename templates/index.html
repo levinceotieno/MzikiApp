@@ -29,7 +29,7 @@
                 <button id="next"><i class="fas fa-forward"></i></button>
                 <input type="range" id="progress" min="0" max="100" value="0">
                 <span id="current-time">00:00</span> / <span id="duration">00:00</span>
-                <button id="like"><i class="fas fa-heart"></i></button>
+		<button id="like" class="like-btn"><i class="fas fa-heart"></i></button>
                 <button id="logoutButton" class="logout-button">Logout</button>
             </div>
             <audio id="audio-player" src="{{ url_for('static', filename='media/audio/song.mp3') }}"></audio>
