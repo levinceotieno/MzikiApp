@@ -10,7 +10,7 @@ app.secret_key = '0f1458de840d11bea92997376415cf66'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://mziki_user:rootmziki@localhost/mziki_player_db'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-LASTFM_API_KEY = '3b907f32074f8a77ff09ed232225a132'
+LASTFM_API_KEY = 'le3b907f32074f8a77ff09ed232225a132vi'
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)

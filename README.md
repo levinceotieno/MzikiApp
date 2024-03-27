@@ -1,4 +1,4 @@
-Mziki Player: A Feature-Rich Music Streaming App with AI-Powered Recommendations
+'**Mziki Player:** A Feature-Rich Music Streaming App with AI-Powered Recommendations'
 
 **Mziki Player** is a web-based music streaming application that elevates music discovery to a whole new level.  It combines a user-friendly interface with powerful AI-powered recommendations to help you find music you'll love.  
 
@@ -43,7 +43,7 @@ To experience the magic of Mziki Player, follow these simple steps:
 4. **Run the Application:**  With the dependencies installed and configurations complete, start the Mziki Player server using:
 
    ```bash
-   flask app
+   flask run
    ```
 
    This will typically launch the application on your local machine at http://127.0.0.1:5000/ (the exact port may vary).
@@ -71,11 +71,8 @@ Mziki Player is licensed under the MIT License. This license grants you the free
 
 **Authors**
 
-* Susan Kimemia
-* Levince Otieno
+* 'Susan Kimemia'
+* 'Levince Otieno'
 
-**Acknowledgments**
-
-A big thank you to the following for their contributions to Mziki Player:
-
-* Susan Kimemia & Levince Otieno
+Follow me Susan on Twitter: [Twitter](https://twitter.com/susanKm_)
+Follow me Levince on Twitter: [Twitter](https://twitter.com/safetynet_now)
