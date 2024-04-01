@@ -103,3 +103,11 @@ nav ul li a {
   color: orange;
   font-weight: bold;
 }
+
+.feature img {
+  max-width: 200px; /* Adjust the value as needed to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Center images horizontally */
+  margin: 0 auto; /* Center images horizontally */
+  border-radius: 5px; /* Add some border radius for aesthetics */
+}
